@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="OrangeHRM UI Automation" verbose="1" >
+    <test name="Run on Chrome" >
+        <classes>
+            <class name="ui.orangehrm.user.Login_01" />
+        </classes>
+    </test>
+</suite>
