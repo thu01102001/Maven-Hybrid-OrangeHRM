@@ -4,6 +4,9 @@
     <test name="Run on Chrome" >
         <classes>
             <class name="ui.orangehrm.user.Login_01_DRY" />
+            <class name="ui.orangehrm.user.Login_02_BasePage_I_Initial" />
+            <class name="ui.orangehrm.user.Login_02_BasePage_II_Static" />
+            <class name="ui.orangehrm.user.Login_02_BasePage_III_Extend" />
         </classes>
     </test>
 </suite>

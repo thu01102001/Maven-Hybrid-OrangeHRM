@@ -38,6 +38,12 @@ public class BasePage {
     // Nếu như có return dữ liệu thì sẽ khớp với kiểu dữ liệu ở số 2
     // Nếu như có return thì nó là step cuối cùng
 
+    //hàm static có nhiệm vụ lấy instance của chính class này
+    //Một biến static / hàm static có thể gọi ra trực tiếp từ phạm vi Class
+    public static BasePage getInstance() {
+        return new BasePage();
+    }
+
     public void openPageUrl(WebDriver driver, String pageUrl) {
         driver.get(pageUrl);
     }
@@ -158,7 +164,7 @@ public class BasePage {
         return driver.findElements(getByXpath(locator));
     }
 
-    public void clickToElement(String locator) {
+    public void clickToElement(WebDriver driver, String locator) {
         getWebElement(driver, locator).click();
     }
 
@@ -179,7 +185,7 @@ public class BasePage {
     }
 
     public void selectItemInSelectableDropdown(WebDriver driver, String parentLocator, String childLocator, String textItem) {
-        clickToElement(parentLocator);
+        clickToElement(driver, parentLocator);
         sleepInSecond(1);
 
         new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(childLocator)));
@@ -381,6 +387,6 @@ public class BasePage {
     public List<WebElement> waitListElementPresence (WebDriver driver, String locator){
         return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(locator)));
-    } 
+    }
 }
 
