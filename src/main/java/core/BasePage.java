@@ -381,6 +381,6 @@ public class BasePage {
     public List<WebElement> waitListElementPresence (WebDriver driver, String locator){
         return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(locator)));
-    }
+    } 
 }
 
