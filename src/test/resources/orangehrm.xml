@@ -1,12 +1,27 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="OrangeHRM UI Automation" verbose="1" >
-    <test name="Run on Chrome" >
+    
+    <parameter name="appUrl" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"></parameter>
+    
+    <test name="Run on CHROME browser" >
+        <parameter name="browser" value="Chrome" />
         <classes>
-            <class name="ui.orangehrm.user.Login_01_DRY" />
-            <class name="ui.orangehrm.user.Login_02_BasePage_I_Initial" />
-            <class name="ui.orangehrm.user.Login_02_BasePage_II_Static" />
-            <class name="ui.orangehrm.user.Login_02_BasePage_III_Extend" />
+            <class name="ui.orangehrm.user.Login_03_Multiple_Browser" />
+        </classes>
+    </test>
+
+    <test name="Run on FIREBOX browser" >
+        <parameter name="browser" value="Firefox" />
+        <classes>
+            <class name="ui.orangehrm.user.Login_03_Multiple_Browser" />
+        </classes>
+    </test>
+
+    <test name="Run on EDGE browser" >
+        <parameter name="browser" value="Edge" />
+        <classes>
+            <class name="ui.orangehrm.user.Login_03_Multiple_Browser" />
         </classes>
     </test>
 </suite>
