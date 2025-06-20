@@ -10,14 +10,15 @@ import java.time.Duration;
 public class BaseTest {
     private WebDriver driver;
     protected WebDriver getBrowserNameDriver(String appUrl, String browserName) {
-        switch (browserName) {
-            case "Firefox":
+        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+        switch (browserList) {
+            case FIREFOX:
                 driver = new FirefoxDriver();
                 break;
-            case "Chrome":
+            case CHROME:
                 driver = new ChromeDriver();
                 break;
-            case "Edge":
+            case EDGE:
                 driver = new EdgeDriver();
                 break;
             default:
