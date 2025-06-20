@@ -1,4 +1,4 @@
-package ui.orangehrm.user;
+package orangehrm;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Login_02_BasePage_I_Initial {
+public class Login_02_BasePage_II_Static {
     private WebDriver driver;
     private BasePage basePage;
     private String appUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
@@ -18,7 +18,7 @@ public class Login_02_BasePage_I_Initial {
     @BeforeClass
     public void BeforeClass() {
         driver = new ChromeDriver();
-        basePage = new BasePage();
+        basePage = BasePage.getInstance();
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

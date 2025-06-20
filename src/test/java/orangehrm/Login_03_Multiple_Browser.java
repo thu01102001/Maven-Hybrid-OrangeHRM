@@ -1,4 +1,4 @@
-package ui.orangehrm.user;
+package orangehrm;
 
 import core.BasePage;
 import core.BaseTest;

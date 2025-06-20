@@ -1,4 +1,4 @@
-package ui.orangehrm.user;
+package orangehrm;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
