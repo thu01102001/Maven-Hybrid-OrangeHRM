@@ -31,4 +31,10 @@ public class BaseTest {
 
         return driver;
     }
+
+    protected void closeBrowser() {
+        if(!(null == driver)) {
+            driver.quit();
+        }
+    }
 }

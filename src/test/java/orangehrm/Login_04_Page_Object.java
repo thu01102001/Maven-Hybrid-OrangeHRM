@@ -74,7 +74,7 @@ public class Login_04_Page_Object extends BaseTest {
 
     @AfterClass
     public void AfterClass() {
-        driver.quit();
+        closeBrowser();
     }
 
     private LoginPageObject loginPage;
