@@ -259,6 +259,5 @@ public class BasePageFactory {
         return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.invisibilityOfAllElements(elements));
     }
-    }
 }
 
