@@ -2,7 +2,7 @@
 
 <suite name="OrangeHRM UI Automation" verbose="1" >
     
-    <parameter name="appUrl" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"></parameter>
+    <parameter name="appUrl" value="http://localhost:8080/orangehrm/web/index.php/auth/login"></parameter>
     
     <test name="Run on CHROME browser" >
         <parameter name="browser" value="Chrome" />
