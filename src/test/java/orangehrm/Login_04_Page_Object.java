@@ -83,5 +83,4 @@ public class Login_04_Page_Object extends BaseTest {
     private PersonalDetailPageObject personalDetailPage;
     private AddEmployeePageObject addEmployeePage;
     private String employeeID;
-
 }
