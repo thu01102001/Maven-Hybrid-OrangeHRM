@@ -25,8 +25,4 @@ public class PersonalDetailPageObject extends BasePage {
         waitElementVisible(driver, PersonalDetailPageUI.EMPLOYEE_ID_TEXTBOX);
         return getElementDOMProperty(driver, PersonalDetailPageUI.EMPLOYEE_ID_TEXTBOX, "value");
     }
-
-    public void openContactDetailPage() {
-
-    }
 }

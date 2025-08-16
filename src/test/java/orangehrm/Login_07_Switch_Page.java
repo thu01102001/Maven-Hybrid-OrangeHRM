@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class Login_06_Page_Manager_III extends BaseTest {
+public class Login_07_Switch_Page extends BaseTest {
     private WebDriver driver;
     private String appUrl;
     String adminUsername, adminPassword, employeeFirstName, employeeLastName;
@@ -20,7 +20,7 @@ public class Login_06_Page_Manager_III extends BaseTest {
         this.appUrl = appUrl;
         driver = getBrowserNameDriver(appUrl, browserName);
 
-        loginPage = PageGeneratorManager.getLoginPage(driver);
+        loginPage = PageGeneratorGeneric.getPage(LoginPageObject.class, driver);
         adminUsername = "automationfc";
         adminPassword = "Auto222$$$";
         employeeFirstName = "Nguyen";
@@ -57,9 +57,21 @@ public class Login_06_Page_Manager_III extends BaseTest {
     }
 
     @Test
-    public void Employee_02_Contact_Detail() {
-        personalDetailPage.openContactDetailPage(driver);
+    public void Employee_02_Switch_Page() {
+        //Personal > Contact
+        contactDetailPage = personalDetailPage.openContactDetailPage(driver);
 
+        //Contact > Job
+        jobPage = contactDetailPage.openJobPage(driver);
+
+        //Job > Dependent
+        dependentsPage = jobPage.openDependentPage(driver);
+
+        //Dependent > Personal
+        personalDetailPage = dependentsPage.openPersonalPage(driver);
+
+        //Personal > Job
+        jobPage = personalDetailPage.openJobPage(driver);
     }
 
 
@@ -74,5 +86,7 @@ public class Login_06_Page_Manager_III extends BaseTest {
     private PersonalDetailPageObject personalDetailPage;
     private AddEmployeePageObject addEmployeePage;
     private ContactDetailPageObject contactDetailPage;
+    private JobPageObject jobPage;
+    private DependentsPageObject dependentsPage;
     private String employeeID;
 }

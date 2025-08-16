@@ -7,7 +7,7 @@
     <test name="Run on CHROME browser" >
         <parameter name="browser" value="Chrome" />
         <classes>
-            <class name="orangehrm.Login_04_Page_Object" />
+            <class name="orangehrm.Login_07_Switch_Page" />
         </classes>
     </test>
 

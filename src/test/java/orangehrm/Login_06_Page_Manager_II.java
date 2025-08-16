@@ -58,7 +58,7 @@ public class Login_06_Page_Manager_II extends BaseTest {
 
     @Test
     public void Employee_02_Contact_Detail() {
-        personalDetailPage.openContactDetailPage();
+        personalDetailPage.openContactDetailPage(driver);
 
     }
 
