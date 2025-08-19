@@ -6,8 +6,12 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.*;
-import pageUIs.*;
+import pageObjects.PageGenerator;
+import pageObjects.openCart.admin.AdminLoginPO;
+import pageObjects.openCart.user.UserHomePO;
+import pageObjects.openCart.user.UserRegisterPO;
+import pageUIs.openCart.user.UserLoginPageUI;
+import pageUIs.orangehrm.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -166,8 +170,20 @@ public class BasePage {
         return driver.findElements(getByXpath(locator));
     }
 
+//    public void clickToElement(WebDriver driver, String locator) {
+//        getWebElement(driver, locator).click();
+//    }
+
     public void clickToElement(WebDriver driver, String locator) {
-        getWebElement(driver, locator).click();
+        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(30))
+                .until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+
+        try {
+            element.click();
+        } catch (ElementNotInteractableException e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        }
     }
 
     public void sendkeyToElement(WebDriver driver, String locator, String keyToSend) {
@@ -391,32 +407,24 @@ public class BasePage {
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(locator)));
     }
 
-    public JobPageObject openJobPage(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.JOB_LINK);
-        clickToElement(driver, BasePageUI.JOB_LINK);
-        return PageGeneratorGeneric.getPage(JobPageObject.class, driver);
-    }
-
-    public PersonalDetailPageObject openPersonalPage(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.PERSONAL_DETAILLINK);
-        clickToElement(driver, BasePageUI.PERSONAL_DETAILLINK);
-        return PageGeneratorGeneric.getPage(PersonalDetailPageObject.class, driver);
-    }
-
-    public DependentsPageObject openDependentPage(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.DEPENDENTS_LINK);
-        clickToElement(driver, BasePageUI.DEPENDENTS_LINK);
-        return PageGeneratorGeneric.getPage(DependentsPageObject.class, driver);
-    }
-
-    public ContactDetailPageObject openContactDetailPage(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.CONTACT_DETAIL_LINK);
-        clickToElement(driver, BasePageUI.CONTACT_DETAIL_LINK);
-        return PageGeneratorGeneric.getPage(ContactDetailPageObject.class, driver);
-    }
-
     public boolean isLoadingSpinnerDisappear(WebDriver driver) {
         return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
+    }
+
+    public UserHomePO clickToLogoutUserSite(WebDriver driver) {
+        return PageGenerator.getPage(UserHomePO.class, driver);
+    }
+    public AdminLoginPO clickToLogoutAdminSite(WebDriver driver) {
+        return PageGenerator.getPage(AdminLoginPO.class, driver);
+    }
+    public AdminLoginPO openAdminSite(WebDriver driver, String adminUrl) {
+        openPageUrl(driver, adminUrl);
+        return PageGenerator.getPage(AdminLoginPO.class, driver);
+    }
+
+    public UserHomePO openUserSite(WebDriver driver, String userUrl) {
+        openPageUrl(driver, userUrl);
+        return PageGenerator.getPage(UserHomePO.class, driver);
     }
 }
 

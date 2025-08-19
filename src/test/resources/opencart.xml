@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="OpenCart UI Automation" verbose="1" >
+    
+    <parameter name="userUrl" value="http://localhost:8080/openCart/upload/"></parameter>
+    <parameter name="adminUrl" value="http://localhost:8080/openCart/upload/admm/"></parameter>
+
+    <test name="Run on CHROME browser" >
+        <parameter name="browser" value="Firefox" />
+        <classes>
+            <class name="openCart.Level_09_Switch_Url" />
+        </classes>
+    </test>
+</suite>
